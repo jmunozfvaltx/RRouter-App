@@ -1,0 +1,18 @@
+<!-- tu_aplicacion/templates/index.html -->
+<html>
+<body>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="user">Registro:</label>
+        <input type="text" name="user" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br>
+
+        <label for="ruta">Ruta del archivo:</label>
+        <input type="text" name="ruta" required><br>
+
+        <button type="submit">Verificar</button>
+    </form>
+</body>
+</html>
