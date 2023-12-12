@@ -3,9 +3,24 @@
 <body>
     <h2>Resultados:</h2>
     <ul>
-        {% for resultado in resultados %}
-            <li>{{ resultado }}</li>
+        {% for device in resultados %}
+            <li>
+                <strong>Hostname:</strong> {{ device.hostname }}<br>
+                <strong>IP:</strong> {{ device.ip }}<br>
+                <strong>Syslog:</strong> {{ device.syslog }}<br>
+                <strong>Web Access:</strong> {{ device.web_access }}<br>
+                <strong>SSH:</strong> {{ device.ssh }}<br>
+                <strong>SNMP:</strong> {{ device.snmp }}<br>
+                <strong>Users:</strong> {{ device.users }}<br>
+                <strong>NTP:</strong> {{ device.ntp }}<br>
+                <strong>No Telnet:</strong> {{ device.no_telnet }}<br>
+                <strong>Inactivity:</strong> {{ device.inactivity }}<br>
+                <strong>Interfaces:</strong> {{ device.interfaces }}<br>
+                <strong>Protocols:</strong> {{ device.protocols }}<br>
+                <strong>Policies:</strong> {{ device.policies }}<br>
+            </li>
         {% endfor %}
     </ul>
 </body>
 </html>
+
