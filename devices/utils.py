@@ -53,7 +53,6 @@ policy2 = ['policy-map type inspect ZBFW_SELFZONE_TO_VPN0_',
         'policy-map type inspect ZBFW_VPN0-TO_SELFZONE_']
 
 
-
 class Verification:
     def __init__(self, comandos):
         self.comandos = comandos
