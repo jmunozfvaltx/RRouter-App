@@ -1,10 +1,21 @@
-# tu_aplicacion/views.py
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.http import HttpResponse
 from .utils import Verification  # Define esta función en un archivo utils.py
 from .models import Device #importa el modelo Device
 
-def index(request):
+def custom_login(request):
+    return render(request, 'login/login.html')
+
+def dashboard(request):
+    # Lógica específica del dashboard aquí
+    return render(request, 'dashboard/dashboard.html')
+
+class CustomLoginView(LoginView):
+    template_name = 'login/login.html'
+    success_url = '/dashboard/'
+
+def sw_interface(request):
     
     devices = Device.objects.all()
     
@@ -42,5 +53,4 @@ def index(request):
         # # Pasa los resultados a la plantilla
         # return render(request, 'resultado.html', {'resultados': device})
 
-    return render(request, 'index.html', {'devices' : devices})
-
+    return render(request, 'sw_interface/index.html', {'devices' : devices})
