@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Profile</title>
 
     {% compress css %}
     <link rel="stylesheet" href="{% static 'src/output.css' %}" />
@@ -16,7 +16,7 @@
   <body class="bg-gradient-to-b from-gray-700 via-gray-900 to-black min-h-screen">
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-              <a href="#" class="flex space-x-1 rtl:space-x-reverse">
+              <a href="{% url "dashboard" %}" class="flex space-x-1 rtl:space-x-reverse">
                 <img src="{% static "img/logo_bbva.webp" %}" class="h-8" alt="BBVA Logo" />
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">App Interfaces</span>
               </a>
@@ -34,10 +34,10 @@
 
                       <ul class="py-2" aria-labelledby="user-menu-button">
                         <li>
-                          <a href="{% url "profile" %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Configuración</a>
+                          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Configuración</a>
                         </li>
                         <li>
-                          <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Cerrar Sesión</a>
+                          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Cerrar Sesión</a>
                         </li>
                       </ul>
                   </div>
@@ -45,7 +45,7 @@
         </div>       
     </nav>
 
-    <main class="p-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-4">
+    <main class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-200 m-4 rounded-md shadow-slate-400 shadow-lg">
       {% block content %}{% endblock content %}
     </main>
 

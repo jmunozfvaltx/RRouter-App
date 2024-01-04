@@ -2,6 +2,18 @@
 
 {% block login %}
 
+{% if messages %}
+    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+        <p class="font-bold">Error de Autenticación</p>
+        <p>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </p>
+    </div>
+{% endif %}
+
+
 <form method="post" action="{% url 'login_builtin' %}" class="flex flex-col gap-2 p-8">
     {% csrf_token %}
     <p class="text-center text-3xl text-gray-300 mb-4">Login</p>

@@ -1,12 +1,13 @@
 from django.contrib.auth.views import LoginView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .utils import Verification  # Define esta función en un archivo utils.py
 from .models import Device #importa el modelo Device
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth import logout
 
-def custom_login(request):
-    return render(request, 'login/login.html')
-
+@login_required
+@permission_required('app_label.codename_permiso', raise_exception=True)
 def dashboard(request):
     # Lógica específica del dashboard aquí
     return render(request, 'dashboard/dashboard.html')
@@ -14,7 +15,13 @@ def dashboard(request):
 class CustomLoginView(LoginView):
     template_name = 'login/login.html'
     success_url = '/dashboard/'
+    
+def logout_view(request):
+    logout(request)
+    return redirect('custom_login')
 
+@login_required
+@permission_required('app_label.codename_permiso', raise_exception=True)
 def sw_interface(request):
     
     devices = Device.objects.all()
@@ -54,3 +61,7 @@ def sw_interface(request):
         # return render(request, 'resultado.html', {'resultados': device})
 
     return render(request, 'sw_interface/index.html', {'devices' : devices})
+
+
+def profile(request):
+    return render(request, 'profile/profile.html')
